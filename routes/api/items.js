@@ -18,8 +18,10 @@ router.get('/api/items', (req, res) => {
 // @desc   Create an item
 // @access Private
 router.post('/api/items', auth, (req, res) => {
+  [title, text] = req.body;
   const newItem = new Item({
-    name: req.body.name
+    title,
+    text,
   });
 
   newItem.save().then(item => res.send(item));
@@ -30,8 +32,8 @@ router.post('/api/items', auth, (req, res) => {
 // @access Private
 router.delete('/api/items/:id', auth, (req, res) => {
   Item.findById(req.params.id)
-  .then(item => item.remove().then(() => res.send(item)))
-  .catch(err => res.status(404).send())
+    .then(item => item.remove().then(() => res.send(item)))
+    .catch(err => res.status(404).send())
 });
 
 module.exports = router;
