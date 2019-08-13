@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://isao:isao@cluster0-ff93x.mongodb.net/mern-shopping",
-  "jwtSecret": "isao_shopping_list"
+  "mongoURI": "mongodb+srv://isao:isao@cluster0-ff93x.mongodb.net/mern-bbs",
+  "jwtSecret": "isao_bbs"
 }
