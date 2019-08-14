@@ -1,7 +1,7 @@
 {
-  "name": "mern-project",
+  "name": "mern-bbs",
   "version": "1.0.0",
-  "description": "Shopping list built with the MERN stack",
+  "description": "BBS Application built with the MERN stack",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -19,9 +19,19 @@
     "config": "^3.1.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.6.0"
+    "mongoose": "^5.6.0",
+    "react-scripts": "^3.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaokozakai/mern-bbs.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/isaokozakai/mern-bbs/issues"
+  },
+  "homepage": "https://github.com/isaokozakai/mern-bbs#readme"
 }

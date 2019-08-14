@@ -18,10 +18,10 @@ router.get('/api/items', (req, res) => {
 // @desc   Create an item
 // @access Private
 router.post('/api/items', auth, (req, res) => {
-  [title, text] = req.body;
+  const { title, text } = req.body;
   const newItem = new Item({
     title,
-    text,
+    text
   });
 
   newItem.save().then(item => res.send(item));
