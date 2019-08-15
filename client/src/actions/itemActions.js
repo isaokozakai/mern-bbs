@@ -40,8 +40,4 @@ export const deleteItem = (id) => async (dispatch, getState) => {
   }
 };
 
-export const setItemsLoading = (item) => {
-  return {
-    type: 'ITEMS_LOADING'
-  };
-};
+export const setItemsLoading = (item) => ({ type: 'ITEMS_LOADING' });

@@ -16,7 +16,8 @@ import PropTypes from 'prop-types';
 class ItemModal extends Component {
   state = {
     modal:false,
-    name: ''
+    title: '',
+    text: ''
   }
 
   static propTypes = {
@@ -29,15 +30,20 @@ class ItemModal extends Component {
     })
   }
 
-  onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  onTitleChange = (e) => {
+    this.setState({ title: e.target.value });
+  }
+
+  onTextChange = (e) => {
+    this.setState({ text: e.target.value });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
     const newItem = {
-      name: this.state.name
+      title: this.state.title,
+      text: this.state.text
     }
 
     this.props.addItem(newItem);
@@ -62,17 +68,25 @@ class ItemModal extends Component {
           isOpen={this.state.modal}
           toggle={this.toggle}
         >
-          <ModalHeader toggle={this.toggle}>Add to Shopping List</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Add to Item List</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="item">Item</Label>
+                <Label for="title">Title</Label>
                 <Input
                   type="text"
-                  name="name"
-                  id="item"
-                  placeholder="Add shopping item"
-                  onChange={this.onChange}
+                  name="title"
+                  id="title"
+                  placeholder=""
+                  onChange={this.onTitleChange}
+                />
+                <Label for="text">Text</Label>
+                <Input
+                  type="textarea"
+                  name="text"
+                  id="text"
+                  placeholder=""
+                  onChange={this.onTextChange}
                 />
                 <Button color="dark" style={{marginTop: '2rem'}} block>
                   Add Item

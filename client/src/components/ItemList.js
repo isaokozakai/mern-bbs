@@ -11,7 +11,7 @@ class ItemList extends Component {
     item: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool
   }
-  
+
   componentDidMount() {
     this.props.getItems();
   }
@@ -25,8 +25,8 @@ class ItemList extends Component {
     return (
       <Container>
         <ListGroup>
-          <TransitionGroup className="shopping-list">
-            {items.map(({ _id, name }) => (
+          <TransitionGroup>
+            {items.map(({ _id, title }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
                   {
@@ -37,11 +37,11 @@ class ItemList extends Component {
                         size="sm"
                         onClick={this.onDeleteClick.bind(this, _id)}
                       >
-                        &times;
+                        Delete
                       </Button>
                       : null
                   }
-                  {name}
+                  {title}
                 </ListGroupItem>
               </CSSTransition>
             ))}

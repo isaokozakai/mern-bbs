@@ -22,10 +22,10 @@ export default (state = initialState, action) => {
       }
     case 'LOGIN_SUCCESS':
     case 'REGISTER_SUCCESS':
-      localStorage.setItem('token', action.token);
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
-        ...action.user,
+        ...action.payload,
         isAuthenticated: true,
         isLoading: false
       }

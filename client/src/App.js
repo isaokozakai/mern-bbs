@@ -14,7 +14,7 @@ import './App.css';
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
-  });
+  }, []);
 
   return (
     <Provider store={store}>
