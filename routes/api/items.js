@@ -27,6 +27,38 @@ router.post('/api/items', auth, (req, res) => {
   newItem.save().then(item => res.send(item));
 });
 
+// @route  PATCH api/items/:id
+// @desc   Update an item
+// @access Private
+router.patch('/api/items/:id', auth, async (req, res) => {
+  const updates = Object.keys(req.body)
+  const allowedUpdates = ['title', 'text', 'date']
+  const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+
+  if (!isValidOperation) {
+    return res.status(400).send({ error: 'Invalid updates!'})
+  }
+
+  try {
+    const item = await Item.findOne({ _id: req.params.id, owner: req.user._id });
+
+    if (!item) {
+      return res.status(404).send()
+    }
+
+    updates.forEach((update) => item[update] = req.body[update])
+    await item.save()
+
+    res.send(item)
+  } catch (e) {
+    if (e.name == 'ValidationError') {
+      res.status(400).send(e)
+    } else {
+      res.status(500).send(e)
+    }
+  }
+});
+
 // @route  DELETE api/items/:id
 // @desc   Delete an item
 // @access Private
