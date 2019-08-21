@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Container, ListGroup } from 'reactstrap';
+import { TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import { getItems, deleteItem } from '../actions/itemActions';
+import { getItems } from '../actions/itemActions';
+import ItemListItem from './ItemListItem';
 import PropTypes from 'prop-types';
 
 class ItemList extends Component {
@@ -16,34 +17,14 @@ class ItemList extends Component {
     this.props.getItems();
   }
 
-  onDeleteClick = (id) => {
-    this.props.deleteItem(id);
-  };
-
   render() {
     const { items } = this.props.item;
     return (
       <Container>
         <ListGroup>
           <TransitionGroup>
-            {items.map(({ _id, title }) => (
-              <CSSTransition key={_id} timeout={500} classNames="fade">
-                <ListGroupItem>
-                  {
-                    this.props.isAuthenticated ?
-                      <Button
-                        className="remove-button"
-                        color="danger"
-                        size="sm"
-                        onClick={this.onDeleteClick.bind(this, _id)}
-                      >
-                        Delete
-                      </Button>
-                      : null
-                  }
-                  {title}
-                </ListGroupItem>
-              </CSSTransition>
+            {items.map((item) => (
+              <ItemListItem key={item._id} id={item._id} title={item.title} date={item.date} isAuthenticated={this.props.isAuthenticated} />
             ))}
           </TransitionGroup>
         </ListGroup>
@@ -57,4 +38,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps,{ getItems, deleteItem })(ItemList);
+export default connect(mapStateToProps, { getItems })(ItemList);

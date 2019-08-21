@@ -15,6 +15,17 @@ export default (state = initialState, action) => {
       return {
         items: [...state.items, action.item]
       };
+    case 'EDIT_ITEM':
+      return state.map((item) => {
+        if (item.id === action.item.id) {
+          return {
+            ...item,
+            ...action.item
+          };
+        } else {
+          return item;
+        }
+      });
     case 'DELETE_ITEM':
       return {
         items: state.items.filter(item => item._id !== action.id)

@@ -28,6 +28,18 @@ export const addItem = (item) => async (dispatch, getState) => {
   }
 };
 
+export const editItem = (id, updates) => async (dispatch, getState) => {
+  try {
+    const res = await axios.patch('/api/items', { id, updates }, tokenConfig(getState));
+    dispatch({
+      type: 'EDIT_ITEM',
+      item: res.data
+    });
+  } catch (err) {
+    dispatch(returnErrors(err.response.data, err.response.status));
+  }
+};
+
 export const deleteItem = (id) => async (dispatch, getState) => {
   try {
     await axios.delete(`/api/items/${id}`, tokenConfig(getState));
