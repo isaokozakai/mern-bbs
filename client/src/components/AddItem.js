@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Container } from 'reactstrap';
 import ItemForm from './ItemForm';
 import { addItem } from '../actions/itemActions';
 
@@ -12,13 +13,13 @@ const AddItem = (props) => {
   return (
     <div>
       <div className="page-header">
-        <div className="content-container">
+        <Container>
           <h1>Add Item</h1>
-        </div>
+        </Container>
       </div>
-      <div>
+      <Container>
         <ItemForm onSubmit={onSubmit} />
-      </div>
+      </Container>
     </div>
   );
 }

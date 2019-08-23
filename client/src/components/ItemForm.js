@@ -33,6 +33,7 @@ const ItemForm = (props) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
+      <br/>
       <textarea
         placeholder="Add a text"
         className="textares"

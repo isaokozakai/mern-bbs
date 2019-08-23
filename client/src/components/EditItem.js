@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Container } from 'reactstrap'
 import ItemForm from './ItemForm';
 import ConfirmationModal from './ConfirmationModal'
 import { editItem, deleteItem } from '../actions/itemActions'
@@ -21,17 +22,17 @@ const EditItem = (props) => {
   return (
     <div>
       <div className="page-header">
-        <div className="content-container">
+        <Container>
           <h1>Edit Item</h1>
-        </div>
+        </Container>
       </div>
-      <div className="content-container">
+      <Container>
         <ItemForm
           item={props.item}
           onSubmit={onSubmit}
         />
         <button className="button button--secondary" onClick={(e) => setModalIsOpen(true)}>Delete Item</button>
-      </div>
+      </Container>
       <ConfirmationModal modalIsOpen={this.state.modalIsOpen} closeModal={(e) => setModalIsOpen(false)} onDelete={onDelete} />
     </div>
   );
