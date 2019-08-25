@@ -11,7 +11,7 @@ const AddItem = (props) => {
   };
 
   return (
-    <div>
+    <>
       <div className="page-header">
         <Container>
           <h1>Add Item</h1>
@@ -20,7 +20,7 @@ const AddItem = (props) => {
       <Container>
         <ItemForm onSubmit={onSubmit} />
       </Container>
-    </div>
+    </>
   );
 }
 

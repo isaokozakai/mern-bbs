@@ -20,7 +20,7 @@ const EditItem = (props) => {
   };
 
   return (
-    <div>
+    <>
       <div className="page-header">
         <Container>
           <h1>Edit Item</h1>
@@ -34,7 +34,7 @@ const EditItem = (props) => {
         <button className="button button--secondary" onClick={(e) => setModalIsOpen(true)}>Delete Item</button>
       </Container>
       <ConfirmationModal modalIsOpen={this.state.modalIsOpen} closeModal={(e) => setModalIsOpen(false)} onDelete={onDelete} />
-    </div>
+    </>
   );
 };
 
