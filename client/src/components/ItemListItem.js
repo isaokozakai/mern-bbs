@@ -25,7 +25,7 @@ const ItemListItem = ({ id, title, date, isAuthenticated }) => {
         </Button>
             : null
         }
-        <Link to={`/content/${id}`}>
+        <Link to={`/detail/${id}`}>
           <h3>{title}</h3>
           <span>{date}</span>
         </Link>
