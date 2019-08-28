@@ -33,13 +33,13 @@ const EditItem = (props) => {
         />
         <button className="button button--secondary" onClick={(e) => setModalIsOpen(true)}>Delete Item</button>
       </Container>
-      <ConfirmationModal modalIsOpen={this.state.modalIsOpen} closeModal={(e) => setModalIsOpen(false)} onDelete={onDelete} />
+      <ConfirmationModal modalIsOpen={modalIsOpen} closeModal={(e) => setModalIsOpen(false)} onDelete={onDelete} />
     </>
   );
 };
 
 const mapStateToProps = (state, props) => ({
-  item: state.items.find((item) => item.id === props.match.params.id)
+  item: state.item.items.find((item) => item._id === props.match.params.id)
 });
 
 export default connect(mapStateToProps, { editItem, deleteItem })(EditItem);

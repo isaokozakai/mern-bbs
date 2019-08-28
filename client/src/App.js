@@ -3,7 +3,7 @@ import AppRouter from './components/AppRouter';
 
 import { Provider } from 'react-redux';
 import store from './store';
-import { loadUser } from './actions/authActions'
+import { loadUser } from './actions/authActions';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
@@ -15,9 +15,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className="App">
-        <AppRouter />
-      </div>
+      <AppRouter />
     </Provider>
   );
 }
