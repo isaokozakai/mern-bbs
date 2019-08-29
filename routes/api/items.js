@@ -14,6 +14,26 @@ router.get('/api/items', (req, res) => {
     .then(items => res.send(items))
 });
 
+// @route  GET api/items/:id
+// @desc   Get one item
+// @access Private
+router.get('/api/items/:id', auth, async (req, res) => {
+  const _id = req.params.id
+
+  try {
+    const item = await Item.findOne({ _id, user: req.user._id })
+
+    if (!item) {
+      return res.status(404).send()
+    }
+
+    res.send(item)
+  } catch (e) {
+      res.status(500).send()
+  }
+})
+
+
 // @route  POST api/items
 // @desc   Create an item
 // @access Private
