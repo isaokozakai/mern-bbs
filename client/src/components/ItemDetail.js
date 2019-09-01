@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadUser } from '../actions/authActions';
 import { getItems } from '../actions/itemActions';
@@ -12,24 +13,31 @@ const ItemDetail = (props) => {
   }, []);
 
   if (props.item) {
-    const { title, text, date } = props.item;
+    const { _id, title, text, date } = props.item;
 
     return (
-      <Container className="border">
-        <Row>
-          <Col>
-            <h1>{title}</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {moment(date).format('MMMM Do, YYYY')}
-          </Col>
-        </Row>
-        <Row>
-          <Col>{text}</Col>
-        </Row>
-      </Container>
+      <>
+        <Container className="border">
+          <Row>
+            <Col>
+              <h1>{title}</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              {moment(date).format('MMMM Do, YYYY')}
+            </Col>
+          </Row>
+          <Row>
+            <Col>{text}</Col>
+          </Row>
+        </Container>
+        <Container>
+          <Link to={`/edit/${_id}`}>
+            Edit
+          </Link>
+        </Container>
+      </>
     )
   } else {
     return (

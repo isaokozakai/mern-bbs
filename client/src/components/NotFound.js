@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom' ;
+import { Link } from 'react-router-dom';
+import { Container } from 'reactstrap';
 
 const NotFound = () => (
-  <div>
+  <Container>
     404 - <Link to="/">Go home</Link>
-  </div>
+  </Container>
 );
 
 export default NotFound;

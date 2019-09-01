@@ -27,8 +27,8 @@ const ItemListItem = ({ id, title, date, isAuthenticated }) => {
         }
         <Link to={`/detail/${id}`}>
           <h3>{title}</h3>
-          <span>{date}</span>
         </Link>
+        <span>{moment(date).format('MMMM Do, YYYY')}</span>
       </ListGroupItem>
     </CSSTransition>
   )

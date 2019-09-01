@@ -10,7 +10,7 @@ const ItemForm = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!this.state.title || !this.state.text) {
+    if (!title || !text) {
       setError('Please provide title and text');
     } else {
       setError('');
