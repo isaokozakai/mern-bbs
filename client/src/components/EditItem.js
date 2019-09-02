@@ -4,12 +4,12 @@ import { Container } from 'reactstrap'
 import ItemForm from './ItemForm';
 import ConfirmationModal from './ConfirmationModal'
 import { loadUser } from '../actions/authActions'
-import { getItems, editItem, deleteItem } from '../actions/itemActions'
+import { getItem, editItem, deleteItem } from '../actions/itemActions'
 
 const EditItem = (props) => {
   useEffect(() => {
     props.loadUser();
-    props.getItems();
+    props.getItem(props.match.params.id);
   }, []);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -24,28 +24,33 @@ const EditItem = (props) => {
     setModalIsOpen(false);
     props.history.push('/');
   };
-
-  return (
-    <>
-      <div className="page-header">
+  if (props.item) {
+    return (
+      <>
+        <div className="page-header">
+          <Container>
+            <h1>Edit Item</h1>
+          </Container>
+        </div>
         <Container>
-          <h1>Edit Item</h1>
+          <ItemForm
+            item={props.item}
+            onSubmit={onSubmit}
+          />
+          <button className="button button--secondary" onClick={(e) => setModalIsOpen(true)}>Delete Item</button>
         </Container>
-      </div>
-      <Container>
-        <ItemForm
-          item={props.item}
-          onSubmit={onSubmit}
-        />
-        <button className="button button--secondary" onClick={(e) => setModalIsOpen(true)}>Delete Item</button>
-      </Container>
-      <ConfirmationModal modalIsOpen={modalIsOpen} closeModal={(e) => setModalIsOpen(false)} onDelete={onDelete} />
-    </>
-  );
+        <ConfirmationModal modalIsOpen={modalIsOpen} closeModal={(e) => setModalIsOpen(false)} onDelete={onDelete} />
+      </>
+    );
+  } else {
+    return (
+      <Container />
+    )
+  }
 };
 
 const mapStateToProps = (state, props) => ({
-  item: state.item.items.find((item) => item._id === props.match.params.id)
+  item: state.item.item
 });
 
-export default connect(mapStateToProps, { loadUser, getItems, editItem, deleteItem })(EditItem);
+export default connect(mapStateToProps, { loadUser, getItem, editItem, deleteItem })(EditItem);

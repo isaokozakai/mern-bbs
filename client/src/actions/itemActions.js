@@ -13,7 +13,19 @@ export const getItems = () => async dispatch => {
   } catch (err) {
     dispatch(returnErrors(err.response.data, err.response.status));
   }
+};
 
+export const getItem = (id) => async dispatch => {
+  dispatch(setItemsLoading);
+  try {
+    const res = await axios.get(`/api/items/${id}`);
+    dispatch({
+      type: 'GET_ITEM',
+      item: res.data
+    });
+  } catch (err) {
+    dispatch(returnErrors(err.response.data, err.response.status));
+  }
 };
 
 export const addItem = (item) => async (dispatch, getState) => {

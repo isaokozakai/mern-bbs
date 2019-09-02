@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadUser } from '../actions/authActions';
-import { getItems } from '../actions/itemActions';
+import { getItem } from '../actions/itemActions';
 import { Container, Row, Col } from 'reactstrap';
 import moment from 'moment';
 
 const ItemDetail = (props) => {
   useEffect(() => {
     props.loadUser();
-    props.getItems();
+    props.getItem(props.match.params.id);
   }, []);
 
   if (props.item) {
@@ -47,7 +47,7 @@ const ItemDetail = (props) => {
 };
 
 const mapStateToProps = (state, props) => ({
-  item: state.item.items.find((item) => item._id === props.match.params.id)
+  item: state.item.item
 });
 
-export default connect(mapStateToProps, { loadUser, getItems })(ItemDetail);
+export default connect(mapStateToProps, { loadUser, getItem })(ItemDetail);

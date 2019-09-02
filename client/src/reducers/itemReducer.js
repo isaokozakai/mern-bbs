@@ -11,6 +11,11 @@ export default (state = initialState, action) => {
         items: action.items,
         loading: false
       };
+    case 'GET_ITEM':
+      return {
+        item: action.item,
+        loading: false
+      };
     case 'ADD_ITEM':
       return {
         items: [...state.items, action.item]

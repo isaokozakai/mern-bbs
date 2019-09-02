@@ -16,12 +16,10 @@ router.get('/api/items', (req, res) => {
 
 // @route  GET api/items/:id
 // @desc   Get one item
-// @access Private
-router.get('/api/items/:id', auth, async (req, res) => {
-  const _id = req.params.id
-
+// @access Public
+router.get('/api/items/:id', async (req, res) => {
   try {
-    const item = await Item.findOne({ _id, user: req.user._id })
+    const item = await Item.findById(req.params.id)
 
     if (!item) {
       return res.status(404).send()
