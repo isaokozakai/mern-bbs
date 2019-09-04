@@ -1,13 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ItemList from './ItemList';
-import ItemModal from './ItemModal';
-import { Container } from 'reactstrap'
+import { Container } from 'reactstrap';
 
-const Dashboard = () => (
-  <Container>
-    <ItemModal />
+const Dashboard = (props) => (
+  <>
+    <Container>
+      <div>
+        {
+          props.isAuthenticated ?
+            <Link to="/create">Add Item</Link>
+            : <h4 className="mb-3 ml-4">Please log in to manage items</h4>
+        }
+      </div>
+    </Container>
     <ItemList />
-  </Container>
+  </>
 );
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(Dashboard);

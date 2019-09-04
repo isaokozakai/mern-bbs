@@ -49,7 +49,7 @@ const EditItem = (props) => {
   }
 };
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
   item: state.item.item
 });
 
