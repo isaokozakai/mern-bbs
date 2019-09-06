@@ -12,12 +12,10 @@ const ItemSchema = new Schema({
     required: true
   },
   postedAt: {
-    type: Date,
-    default: Date.now
+    type: Date
   },
   updatedAt: {
-    type: Date,
-    default: Date.now
+    type: Date
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

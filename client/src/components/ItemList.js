@@ -24,7 +24,7 @@ class ItemList extends Component {
         <ListGroup>
           <TransitionGroup>
             {items.map((item) => (
-              <ItemListItem key={item._id} id={item._id} title={item.title} date={item.date} isAuthenticated={this.props.isAuthenticated} />
+              <ItemListItem key={item._id} id={item._id} title={item.title} createdAt={item.createdAt} updatedAt={item.updatedAt} isAuthenticated={this.props.isAuthenticated} />
             ))}
           </TransitionGroup>
         </ListGroup>
