@@ -36,10 +36,11 @@ router.get('/api/items/:id', async (req, res) => {
 // @desc   Create an item
 // @access Private
 router.post('/api/items', auth, (req, res) => {
-  const { title, text } = req.body;
+  const { title, description, updatedAt } = req.body;
   const newItem = new Item({
     title,
-    text
+    description,
+    updatedAt
   });
 
   newItem.save().then(item => res.send(item));
@@ -50,7 +51,7 @@ router.post('/api/items', auth, (req, res) => {
 // @access Private
 router.patch('/api/items/:id', auth, async (req, res) => {
   const updates = Object.keys(req.body)
-  const allowedUpdates = ['title', 'text', 'date']
+  const allowedUpdates = ['title', 'description', 'updatedAt']
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
   if (!isValidOperation) {

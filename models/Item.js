@@ -7,11 +7,15 @@ const ItemSchema = new Schema({
     type: String,
     required: true
   },
-  text: {
+  description: {
     type: String,
     required: true
   },
-  date: {
+  postedAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
     type: Date,
     default: Date.now
   },

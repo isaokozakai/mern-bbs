@@ -13,7 +13,7 @@ const ItemDetail = (props) => {
   }, []);
 
   if (props.item) {
-    const { _id, title, text, date } = props.item;
+    const { _id, title, description, postedAt, updatedAt } = props.item;
 
     return (
       <>
@@ -25,11 +25,17 @@ const ItemDetail = (props) => {
           </Row>
           <Row>
             <Col>
-              {moment(date).format('MMMM Do, YYYY')}
+              posted: {moment(postedAt).format('MMMM Do, YYYY')}
             </Col>
+            {
+              updatedAt ?
+                <Col>
+                  updated: {moment(updatedAt).format('MMMM Do, YYYY')}
+                </Col> : null
+            }
           </Row>
           <Row>
-            <Col>{text}</Col>
+            <Col>{description}</Col>
           </Row>
         </Container>
         <Container>

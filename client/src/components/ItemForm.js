@@ -3,21 +3,22 @@ import moment from 'moment';
 
 const ItemForm = (props) => {
   const [title, setTitle] = useState(props.item ? props.item.title : '');
-  const [text, setText] = useState(props.item ? props.item.text : '');
-  const [date, setDate] = useState(props.item ? moment(props.item.date) : moment());
+  const [description, setDescription] = useState(props.item ? props.item.description : '');
+  const [updatedAt, setUpdatedAt] = useState(moment());
+  const [createdAt, setCreatedAt] = useState(props.item ? moment(props.item.createdAt) : '');
   const [error, setError] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !text) {
-      setError('Please provide title and text');
+    if (!title || !description) {
+      setError('Please provide title and description');
     } else {
       setError('');
       props.onSubmit({
         title,
-        text,
-        date: date.valueOf()
+        description,
+        updatedAt: updatedAt.valueOf()
       })
     }
   };
@@ -35,10 +36,10 @@ const ItemForm = (props) => {
       />
       <br/>
       <textarea
-        placeholder="Add a text"
+        placeholder="Add a description"
         className="textares"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
       >
       </textarea>
       <div>
