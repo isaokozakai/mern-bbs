@@ -21,7 +21,7 @@ const ItemDetail = (props) => {
 
     return (
       <>
-        <Container className="border mb-2">
+        <Container className="border rounded mb-2">
           <Row>
             <Col>
               <h1>{title}</h1>
@@ -44,7 +44,7 @@ const ItemDetail = (props) => {
         </Container>
         <Container>
           <Link to={`/edit/${_id}`} className="mr-2">
-            <Button color="success" onClick={onDeleteClick}>
+            <Button color="success">
               Edit
             </Button>
           </Link>

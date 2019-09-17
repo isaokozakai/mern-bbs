@@ -2,18 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ItemList from './ItemList';
-import { Container } from 'reactstrap';
+import { Container, Button } from 'reactstrap';
 
 const Dashboard = (props) => (
   <>
-    <Container>
-      <div>
-        {
-          props.isAuthenticated ?
-            <Link to="/create">Add Item</Link>
-            : <h4 className="mb-3 ml-4">Please log in to manage items</h4>
-        }
-      </div>
+    <Container className="mb-2">
+      {
+        props.isAuthenticated ?
+          <Link to="/create">
+            <Button color="secondary">
+              Add Item
+            </Button>
+          </Link>
+          : <h4>Please log in to manage items</h4>
+      }
     </Container>
     <ItemList />
   </>

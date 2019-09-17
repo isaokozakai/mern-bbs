@@ -13,6 +13,7 @@ export default (state = initialState, action) => {
       };
     case 'GET_ITEM':
       return {
+        ...state,
         item: action.item,
         loading: false
       };

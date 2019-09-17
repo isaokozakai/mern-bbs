@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container, ListGroup } from 'reactstrap';
-import { TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getItems } from '../actions/itemActions';
 import ItemListItem from './ItemListItem';
@@ -22,11 +21,9 @@ class ItemList extends Component {
     return (
       <Container>
         <ListGroup>
-          <TransitionGroup>
-            {items.map((item) => (
-              <ItemListItem key={item._id} id={item._id} title={item.title} createdAt={item.createdAt} updatedAt={item.updatedAt} isAuthenticated={this.props.isAuthenticated} />
-            ))}
-          </TransitionGroup>
+          {items.map((item) => (
+            <ItemListItem key={item._id} id={item._id} title={item.title} createdAt={item.createdAt} updatedAt={item.updatedAt} isAuthenticated={this.props.isAuthenticated} />
+          ))}
         </ListGroup>
       </Container>
     );
