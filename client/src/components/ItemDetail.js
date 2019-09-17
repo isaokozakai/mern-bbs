@@ -21,26 +21,28 @@ const ItemDetail = (props) => {
 
     return (
       <>
-        <Container className="border rounded mb-2">
-          <Row>
-            <Col>
-              <h1>{title}</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              posted: {moment(postedAt).format('MMM Do, YYYY')}
-            </Col>
-            {
-              updatedAt ?
-                <Col>
-                  updated: {moment(updatedAt).format('MMM Do, YYYY')}
-                </Col> : null
-            }
-          </Row>
-          <Row>
-            <Col>{description}</Col>
-          </Row>
+        <Container>
+          <Container className="border rounded mb-2">
+            <Row>
+              <Col>
+                <h1>{title}</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                posted: {moment(postedAt).format('MMM Do, YYYY')}
+              </Col>
+              {
+                updatedAt ?
+                  <Col>
+                    updated: {moment(updatedAt).format('MMM Do, YYYY')}
+                  </Col> : null
+              }
+            </Row>
+            <Row>
+              <Col>{description}</Col>
+            </Row>
+          </Container>
         </Container>
         <Container>
           <Link to={`/edit/${_id}`} className="mr-2">
