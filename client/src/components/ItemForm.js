@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 const ItemForm = (props) => {
+
   const [title, setTitle] = useState(props.item ? props.item.title : '');
   const [description, setDescription] = useState(props.item ? props.item.description : '');
-  const [updatedAt, setUpdatedAt] = useState(moment());
-  const [createdAt, setCreatedAt] = useState(props.item ? moment(props.item.createdAt) : '');
+  const [updatedAt] = useState(props.item ? moment() : '');
   const [error, setError] = useState('');
 
   const onSubmit = (e) => {

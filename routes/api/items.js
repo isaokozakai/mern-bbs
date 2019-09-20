@@ -36,11 +36,13 @@ router.get('/api/items/:id', async (req, res) => {
 // @desc   Create an item
 // @access Private
 router.post('/api/items', auth, (req, res) => {
-  const { title, description, updatedAt } = req.body;
+  const { title, description, updatedAt, createdAt, user } = req.body;
   const newItem = new Item({
     title,
     description,
-    updatedAt
+    updatedAt,
+    createdAt,
+    user
   });
 
   newItem.save().then(item => res.send(item));
@@ -59,7 +61,7 @@ router.patch('/api/items/:id', auth, async (req, res) => {
   }
 
   try {
-    const item = await Item.findOne({ _id: req.params.id, owner: req.user._id });
+    const item = await Item.findById(req.params.id);
 
     if (!item) {
       return res.status(404).send()

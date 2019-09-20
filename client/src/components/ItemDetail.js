@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadUser } from '../actions/authActions';
 import { getItem, deleteItem } from '../actions/itemActions';
 import { Button, Container, Row, Col } from 'reactstrap';
 import moment from 'moment';
 
 const ItemDetail = (props) => {
   useEffect(() => {
-    props.loadUser();
     props.getItem(props.match.params.id);
   }, []);
 
   const onDeleteClick = () => {
-    deleteItem(props.item._id);
+    props.deleteItem(props.item._id);
+    props.history.push('/');
   };
 
   if (props.item) {
-    const { _id, title, description, postedAt, updatedAt } = props.item;
+    const { _id, title, description, postedAt, updatedAt, user } = props.item;
 
     return (
       <>
@@ -44,16 +43,20 @@ const ItemDetail = (props) => {
             </Row>
           </Container>
         </Container>
-        <Container>
-          <Link to={`/edit/${_id}`} className="mr-2">
-            <Button color="success">
-              Edit
-            </Button>
-          </Link>
-          <Button color="danger" onClick={onDeleteClick}>
-            Delete
-          </Button>
-        </Container>
+        {
+          props.isAuthenticated ? (
+            <Container>
+              <Link to={`/edit/${_id}`} className="mr-2">
+                <Button color="success">
+                  Edit
+                </Button>
+              </Link>
+              <Button color="danger" onClick={onDeleteClick}>
+                Delete
+              </Button>
+            </Container>
+          ) : null
+        }
       </>
     )
   } else {
@@ -64,7 +67,8 @@ const ItemDetail = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  item: state.item.item
+  item: state.item.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { loadUser, getItem, deleteItem })(ItemDetail);
+export default connect(mapStateToProps, { getItem, deleteItem })(ItemDetail);

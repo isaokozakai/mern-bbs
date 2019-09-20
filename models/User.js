@@ -22,4 +22,10 @@ const UserSchema = new Schema({
   }
 });
 
+UserSchema.virtual('items', {
+  ref: 'item',
+  localField: '_id',
+  foreignField: 'user'
+});
+
 module.exports = User = mongoose.model('user', UserSchema);

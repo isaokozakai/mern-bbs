@@ -22,8 +22,8 @@ export default (state = initialState, action) => {
         items: [...state.items, action.item]
       };
     case 'EDIT_ITEM':
-      return state.map((item) => {
-        if (item.id === action.item.id) {
+      let items = state.items.map((item) => {
+        if (item._id === action.item._id) {
           return {
             ...item,
             ...action.item
@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
           return item;
         }
       });
+      return { ...state, items };
     case 'DELETE_ITEM':
       return {
         items: state.items.filter(item => item._id !== action.id)
