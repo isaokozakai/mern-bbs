@@ -19,7 +19,6 @@ const ItemSchema = new Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'user'
   }
 });
