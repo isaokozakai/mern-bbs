@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'reactstrap';
 import moment from 'moment';
 
 const ItemForm = (props) => {
@@ -43,7 +44,7 @@ const ItemForm = (props) => {
       >
       </textarea>
       <div>
-        <button className="button">Save Item</button>
+        <Button color="secondary">Save Item</Button>
       </div>
     </form>
   )

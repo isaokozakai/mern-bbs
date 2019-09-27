@@ -12,7 +12,7 @@ const AddItem = (props) => {
   }, []);
 
   const onSubmit = (item) => {
-    item = { ...item, createdAt: moment(), user: props.user._id }
+    item = { ...item, postedAt: moment(), user: props.user._id }
     props.addItem(item);
     props.history.push('/');
   };

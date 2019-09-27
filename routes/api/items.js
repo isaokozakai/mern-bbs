@@ -36,12 +36,12 @@ router.get('/api/items/:id', async (req, res) => {
 // @desc   Create an item
 // @access Private
 router.post('/api/items', auth, (req, res) => {
-  const { title, description, updatedAt, createdAt, user } = req.body;
+  const { title, description, updatedAt, postedAt, user } = req.body;
   const newItem = new Item({
     title,
     description,
     updatedAt,
-    createdAt,
+    postedAt,
     user
   });
 
