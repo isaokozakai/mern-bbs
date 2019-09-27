@@ -9,27 +9,45 @@ const Item = require('../../models/Item');
 // @desc   Get all items
 // @access Public
 router.get('/api/items', (req, res) => {
-  Item.find()
-    .sort({ date: -1 })
-    .then(items => res.send(items))
+  Item.find().then(items => res.send(items))
+});
+
+// @route  GET api/items/search
+// @desc   Get specific items
+// @access Public
+router.get('/api/items/search', async (req, res) => {
+  try {
+    const items = await Item.find().or([
+      { title: { $regex: req.query.q, $options: 'i' } },
+      { description: { $regex: req.query.q, $options: 'i' } }
+    ])
+
+    if (items.length === 0) {
+      res.send({ msg: 'Nothing found for that search.' });
+    }
+
+    res.send(items);
+  } catch (e) {
+    res.status(500).send();
+  }
 });
 
 // @route  GET api/items/:id
-// @desc   Get one item
+// @desc   Get an item by id
 // @access Public
 router.get('/api/items/:id', async (req, res) => {
   try {
     const item = await Item.findById(req.params.id)
 
     if (!item) {
-      return res.status(404).send()
+      return res.status(404).send();
     }
 
-    res.send(item)
+    res.send(item);
   } catch (e) {
-      res.status(500).send()
+    res.status(500).send();
   }
-})
+});
 
 
 // @route  POST api/items
@@ -57,25 +75,25 @@ router.patch('/api/items/:id', auth, async (req, res) => {
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
   if (!isValidOperation) {
-    return res.status(400).send({ error: 'Invalid updates!'})
+    return res.status(400).send({ error: 'Invalid updates!' });
   }
 
   try {
     const item = await Item.findById(req.params.id);
 
     if (!item) {
-      return res.status(404).send()
+      return res.status(404).send();
     }
 
-    updates.forEach((update) => item[update] = req.body[update])
-    await item.save()
+    updates.forEach((update) => item[update] = req.body[update]);
+    await item.save();
 
-    res.send(item)
+    res.send(item);
   } catch (e) {
     if (e.name == 'ValidationError') {
-      res.status(400).send(e)
+      res.status(400).send(e);
     } else {
-      res.status(500).send(e)
+      res.status(500).send(e);
     }
   }
 });
@@ -86,7 +104,7 @@ router.patch('/api/items/:id', auth, async (req, res) => {
 router.delete('/api/items/:id', auth, (req, res) => {
   Item.findById(req.params.id)
     .then(item => item.remove().then(() => res.send(item)))
-    .catch(err => res.status(404).send())
+    .catch(err => res.status(404).send());
 });
 
 module.exports = router;

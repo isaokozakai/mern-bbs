@@ -18,7 +18,9 @@ class ItemList extends Component {
 
   render() {
     const { items } = this.props.item;
-    items.sort((a, b) => {
+    items.filter(() => {
+
+    }).sort((a, b) => {
       const dateA = a.updatedAt ? a.updatedAt : a.postedAt;
       const dateB = b.updatedAt ? b.updatedAt : b.postedAt;
       return dateA < dateB ? 1 : -1;
