@@ -12,26 +12,6 @@ router.get('/api/items', (req, res) => {
   Item.find().then(items => res.send(items))
 });
 
-// @route  GET api/items/search
-// @desc   Get specific items
-// @access Public
-router.get('/api/items/search', async (req, res) => {
-  try {
-    const items = await Item.find().or([
-      { title: { $regex: req.query.q, $options: 'i' } },
-      { description: { $regex: req.query.q, $options: 'i' } }
-    ])
-
-    if (items.length === 0) {
-      res.send({ msg: 'Nothing found for that search.' });
-    }
-
-    res.send(items);
-  } catch (e) {
-    res.status(500).send();
-  }
-});
-
 // @route  GET api/items/:id
 // @desc   Get an item by id
 // @access Public

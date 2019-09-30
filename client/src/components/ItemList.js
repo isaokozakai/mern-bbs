@@ -11,20 +11,30 @@ class ItemList extends Component {
     item: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool
   }
-
+  
   componentDidMount() {
     this.props.getItems();
   }
 
-  render() {
-    const { items } = this.props.item;
-    items.filter(() => {
+  filterItems = (items) => {
+    let text = sessionStorage.getItem('text');
+    if (text == null) {
+      text = this.props.text;
+    }
+    const regex = new RegExp(text, 'i');
+    return items.filter((item) => {
+      return item.title.match(regex) || item.description.match(regex);
+    })
+  }
 
-    }).sort((a, b) => {
+  render() {
+    let { items } = this.props.item;
+    items = this.filterItems(items).sort((a, b) => {
       const dateA = a.updatedAt ? a.updatedAt : a.postedAt;
       const dateB = b.updatedAt ? b.updatedAt : b.postedAt;
       return dateA < dateB ? 1 : -1;
     });
+
     return (
       <Container>
         <ListGroup>

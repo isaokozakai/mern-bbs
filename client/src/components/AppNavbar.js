@@ -62,7 +62,7 @@ class AppNavbar extends Component {
       <div>
         <Navbar color="dark" dark expand="sm" className="mb-5">
           <Container>
-            <NavbarBrand href="/">Bulletin Board</NavbarBrand>
+            <NavbarBrand href="/" onClick={() => sessionStorage.clear()}>Bulletin Board</NavbarBrand>
             <NavbarToggler style={{ color: 'white' }} onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>

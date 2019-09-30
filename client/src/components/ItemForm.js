@@ -3,7 +3,6 @@ import { Button } from 'reactstrap';
 import moment from 'moment';
 
 const ItemForm = (props) => {
-
   const [title, setTitle] = useState(props.item ? props.item.title : '');
   const [description, setDescription] = useState(props.item ? props.item.description : '');
   const [updatedAt] = useState(props.item ? moment() : '');

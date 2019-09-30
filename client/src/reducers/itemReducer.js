@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
         items: [...state.items, action.item]
       };
     case 'EDIT_ITEM':
-      let items = state.items.map((item) => {
+      const items = state.items.map((item) => {
         if (item._id === action.item._id) {
           return {
             ...item,
