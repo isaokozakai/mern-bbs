@@ -1,28 +1,30 @@
-import React from 'react';
-import Modal from 'react-modal';
+import React, { useState } from 'react';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap';
 
 const ConfirmationModal = (props) => (
-  <Modal
-    appElement={document.getElementById('app')}
-    isOpen={props.modalIsOpen}
-    contentLabel="Confirmation"
-    closeTimeoutMS={200}
-    className="modal"
-  >
-    <h3 className="modal__title">Are you sure you want to delete this item?</h3>
-    <button
-      className="button button--confirmation button--secondary"
-      onClick={props.closeModal}
-    >
-      No
-    </button>
-    <button
-      className="button button--confirmation"
-      onClick={props.onDlete}
-    >
-      Yes
-    </button>
-  </Modal>
+  <>
+    <Button onClick={props.toggle}>Delete Item</Button>
+    <Modal isOpen={props.modal} toggle={props.toggle} >
+      <ModalHeader toggle={props.toggle}>Confirmation</ModalHeader>
+      <ModalBody>
+        Are you sure you want to delete this item?
+      </ModalBody>
+      <ModalFooter>
+        <Button color="secondary" onClick={props.toggle} style={{ width: '100px' }} >
+          No
+        </Button>
+        <Button color="danger" onClick={props.onDelete} style={{ width: '100px' }}>
+          Yes
+        </Button>
+      </ModalFooter>
+    </Modal>
+  </>
 )
 
 export default ConfirmationModal;

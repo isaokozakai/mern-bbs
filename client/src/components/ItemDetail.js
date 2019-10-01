@@ -1,22 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import ConfirmationModal from './ConfirmationModal'
 import { getItem, deleteItem } from '../actions/itemActions';
 import { Button, Container, Row, Col } from 'reactstrap';
 import moment from 'moment';
 
 const ItemDetail = (props) => {
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
   useEffect(() => {
     props.getItem(props.match.params.id);
   }, []);
 
-  const onDeleteClick = () => {
+  const onDelete = (e) => {
     props.deleteItem(props.item._id);
+    toggle();
     props.history.push('/');
-  };
+  }
 
   if (props.item) {
-    const { _id, title, description, postedAt, updatedAt, user } = props.item;
+    const { _id, title, description, postedAt, updatedAt } = props.item;
 
     return (
       <>
@@ -51,9 +59,7 @@ const ItemDetail = (props) => {
                   Edit
                 </Button>
               </Link>
-              <Button color="danger" onClick={onDeleteClick}>
-                Delete
-              </Button>
+              <ConfirmationModal onDelete={onDelete} modal={modal} toggle={toggle} />
             </Container>
           ) : null
         }
