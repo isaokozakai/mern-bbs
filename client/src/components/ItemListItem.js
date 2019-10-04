@@ -9,7 +9,7 @@ const ItemListItem = ({ id, title, postedAt, updatedAt }) => {
       <Link to={`/detail/${id}`}>
         <h3>{title}</h3>
       </Link>
-      <span>{moment(updatedAt ? updatedAt : postedAt).format('MMM Do, YYYY')}</span>
+      <span>{moment(updatedAt ? updatedAt : postedAt).format('ll')}</span>
     </ListGroupItem>
   )
 };

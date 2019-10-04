@@ -28,25 +28,28 @@ const ItemDetail = (props) => {
 
     return (
       <>
-        <Container className="px-5">
+        <Container className="px-5 mb-2">
           <Row>
             <Col>
               <h1>{title}</h1>
             </Col>
           </Row>
           <Row>
-            <Col>
-              posted: {moment(postedAt).format('MMM Do, YYYY')}
+            <Col className="d-flex">
+              <p className="mr-5">
+                posted: {moment(postedAt).format('ll')}
+              </p>
+              {
+                updatedAt ?
+                  <p>
+                    updated: {moment(updatedAt).format('ll')}
+                  </p>
+                  : null
+              }
             </Col>
-            {
-              updatedAt ?
-                <Col>
-                  updated: {moment(updatedAt).format('MMM Do, YYYY')}
-                </Col> : null
-            }
           </Row>
           <Row>
-            <Col><p style={{ fontSize: '20px' }}>{description}</p></Col>
+            <Col><pre style={{ fontSize: '20px' }}>{description}</pre></Col>
           </Row>
         </Container>
         {

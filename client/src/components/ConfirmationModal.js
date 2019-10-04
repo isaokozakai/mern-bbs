@@ -10,7 +10,7 @@ import {
 
 const ConfirmationModal = (props) => (
   <>
-    <Button onClick={props.toggle}>Delete</Button>
+    <Button color="danger" onClick={props.toggle}>Delete</Button>
     <Modal isOpen={props.modal} toggle={props.toggle} >
       <ModalHeader toggle={props.toggle}>Confirmation</ModalHeader>
       <ModalBody>
