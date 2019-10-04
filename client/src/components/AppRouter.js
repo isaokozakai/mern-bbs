@@ -1,5 +1,6 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import AppNavbar from './AppNavbar';
 import Dashboard from './Dashboard';
@@ -15,21 +16,39 @@ const AppRouter = () => {
     component: Component,
     ...rest
   }) => (
-      <Route {...rest} component={(props) => (
+    <Route {...rest} component={(props) => (
+      <div>
+        <AppNavbar />
+        <Component {...props} />
+      </div>
+    )} />
+  );
+
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+  const PrivateRoute = ({
+    component: Component,
+    ...rest
+  }) => (
+    <Route {...rest} component={(props) => (
+      isAuthenticated ? (
         <div>
           <AppNavbar />
           <Component {...props} />
         </div>
-      )} />
-    );
+      ) : (
+          <Redirect to="/" />
+        )
+    )} />
+  );
 
   return (
     <Router history={history}>
       <Switch>
         <PublicRoute path="/" component={Dashboard} exact={true} />
         <PublicRoute path="/detail/:id" component={ItemDetail} />
-        <PublicRoute path="/create" component={AddItem} />
-        <PublicRoute path="/edit/:id" component={EditItem} />
+        <PrivateRoute path="/create" component={AddItem} />
+        <PrivateRoute path="/edit/:id" component={EditItem} />
         <PublicRoute component={NotFound} />
       </Switch>
     </Router>
