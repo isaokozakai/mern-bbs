@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'reactstrap';
+import { Container, Button, Input, Form } from 'reactstrap';
 import moment from 'moment';
 
 const ItemForm = (props) => {
@@ -24,28 +24,28 @@ const ItemForm = (props) => {
   };
 
   return (
-    <form className="form" onSubmit={onSubmit}>
-      {error && <p className="form__error">{error}</p>}
-      <input
-        type="text"
-        placeholder="Title"
-        autoFocus
-        className="text-input"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <br/>
-      <textarea
-        placeholder="Add a description"
-        className="textares"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      >
-      </textarea>
-      <div>
+    <Container className="px-5">
+      <Form onSubmit={onSubmit}>
+        {error && <p className="text-danger">{error}</p>}
+        <Input
+          type="text"
+          placeholder="title"
+          autoFocus
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-100 mb-2"
+        />
+        <Input
+          placeholder="description"
+          type="textarea"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-100 mb-3"
+          rows="10"
+        />
         <Button color="secondary">Save Item</Button>
-      </div>
-    </form>
+      </Form>
+    </Container>
   )
 };
 

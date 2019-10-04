@@ -19,15 +19,13 @@ const EditItem = (props) => {
   if (props.item) {
     return (
       <>
-        <Container>
+        <Container className="px-5">
           <h1>Edit Item</h1>
         </Container>
-        <Container>
-          <ItemForm
-            item={props.item}
-            onSubmit={onSubmit}
-          />
-        </Container>
+        <ItemForm
+          item={props.item}
+          onSubmit={onSubmit}
+        />
       </>
     );
   } else {

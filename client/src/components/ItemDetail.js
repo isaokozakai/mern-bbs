@@ -28,37 +28,33 @@ const ItemDetail = (props) => {
 
     return (
       <>
-        <Container>
-          <Container className="border rounded mb-2">
-            <Row>
-              <Col>
-                <h1>{title}</h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                posted: {moment(postedAt).format('MMM Do, YYYY')}
-              </Col>
-              {
-                updatedAt ?
-                  <Col>
-                    updated: {moment(updatedAt).format('MMM Do, YYYY')}
-                  </Col> : null
-              }
-            </Row>
-            <Row>
-              <Col>{description}</Col>
-            </Row>
-          </Container>
+        <Container className="px-5">
+          <Row>
+            <Col>
+              <h1>{title}</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              posted: {moment(postedAt).format('MMM Do, YYYY')}
+            </Col>
+            {
+              updatedAt ?
+                <Col>
+                  updated: {moment(updatedAt).format('MMM Do, YYYY')}
+                </Col> : null
+            }
+          </Row>
+          <Row>
+            <Col><p style={{ fontSize: '20px' }}>{description}</p></Col>
+          </Row>
         </Container>
         {
           props.isAuthenticated ? (
-            <Container>
-              <Link to={`/edit/${_id}`} className="mr-2">
-                <Button color="success">
-                  Edit
-                </Button>
-              </Link>
+            <Container className="px-5">
+              <Button tag={Link} to={`/edit/${_id}`} color="success" className="mr-2">
+                Edit
+              </Button>
               <ConfirmationModal onDelete={onDelete} modal={modal} toggle={toggle} />
             </Container>
           ) : null

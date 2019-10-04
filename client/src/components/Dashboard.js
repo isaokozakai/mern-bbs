@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ItemList from './ItemList';
-import { Container, Button } from 'reactstrap';
+import { Container, InputGroup, InputGroupAddon, InputGroupText, Input, Button, Row, Col } from 'reactstrap';
 
 const Dashboard = (props) => {
   const [text, setText] = useState('');
@@ -18,28 +18,26 @@ const Dashboard = (props) => {
   };
   return (
     <>
-      <Container className="mb-2">
-        {
-          props.isAuthenticated ?
-            <Link to="/create">
-              <Button color="secondary">
-                Add Item
-            </Button>
-            </Link>
-            : <h4>Please log in to manage items</h4>
-        }
-        <input
-          id="search"
-          type="text"
-          placeholder="search"
-          autoFocus
-          className="text-input"
-        />
-        <div>
-          <Button color="secondary" onClick={onSearchClick}>
-            <i className="fas fa-search"></i>
-          </Button>
-        </div>
+      <Container className="mb-3 px-5" >
+        <Row>
+          <Col sm="6">
+            <InputGroup>
+              <Input id="search" placeholder="search" />
+              <InputGroupAddon addonType="append" onClick={onSearchClick}>
+                <InputGroupText><i className="fas fa-search"></i></InputGroupText>
+              </InputGroupAddon>
+            </InputGroup>
+          </Col>
+          {
+            props.isAuthenticated ?
+              <Col className="d-flex justify-content-end">
+                <Button tag={Link} to="/create">
+                  Add Item
+                </Button>
+              </Col>
+              : null
+          }
+        </Row>
       </Container>
       <ItemList text={text} />
     </>

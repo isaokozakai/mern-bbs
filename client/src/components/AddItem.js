@@ -19,12 +19,10 @@ const AddItem = (props) => {
 
   return (
     <>
-      <Container>
+      <Container className="px-5">
         <h1>Add Item</h1>
       </Container>
-      <Container>
-        <ItemForm onSubmit={onSubmit} />
-      </Container>
+      <ItemForm onSubmit={onSubmit} />
     </>
   );
 };

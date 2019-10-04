@@ -25,15 +25,13 @@ const AppRouter = () => {
 
   return (
     <Router history={history}>
-      <div>
-        <Switch>
-          <PublicRoute path="/" component={Dashboard} exact={true} />
-          <PublicRoute path="/detail/:id" component={ItemDetail} />
-          <PublicRoute path="/create" component={AddItem} />
-          <PublicRoute path="/edit/:id" component={EditItem} />
-          <PublicRoute component={NotFound} />
-        </Switch>
-      </div>
+      <Switch>
+        <PublicRoute path="/" component={Dashboard} exact={true} />
+        <PublicRoute path="/detail/:id" component={ItemDetail} />
+        <PublicRoute path="/create" component={AddItem} />
+        <PublicRoute path="/edit/:id" component={EditItem} />
+        <PublicRoute component={NotFound} />
+      </Switch>
     </Router>
   )
 };
