@@ -34,27 +34,27 @@ const ItemDetail = (props) => {
               <h1>{title}</h1>
             </Col>
           </Row>
-          <Row>
+          <Row className="mt-2">
             <Col className="d-flex">
               <p className="mr-5">
-                posted: {moment(postedAt).format('ll')}
+                posted: {moment(postedAt).format('lll')}
               </p>
               {
                 updatedAt ?
                   <p>
-                    updated: {moment(updatedAt).format('ll')}
+                    updated: {moment(updatedAt).format('lll')}
                   </p>
                   : null
               }
             </Col>
           </Row>
-          <Row>
-            <Col><pre style={{ fontSize: '20px' }}>{description}</pre></Col>
+          <Row className="my-2">
+            <Col><pre style={{ fontSize: '18px' }}>{description}</pre></Col>
           </Row>
         </Container>
         {
           props.isAuthenticated ? (
-            <Container className="px-5">
+            <Container className="px-5 mb-5">
               <Button tag={Link} to={`/edit/${_id}`} color="success" className="mr-2">
                 Edit
               </Button>
