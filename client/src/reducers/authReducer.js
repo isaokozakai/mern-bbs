@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        user: action.user
+        payload: action.user
       }
     case 'LOGIN_SUCCESS':
     case 'REGISTER_SUCCESS':
@@ -37,7 +37,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         token: null,
-        user: null,
+        payload: null,
         isAuthenticated: false,
         isLoading: false
       }
