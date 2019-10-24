@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container } from 'reactstrap'
 import ItemForm from './ItemForm';
-import { loadUser } from '../actions/authActions'
-import { getItem, editItem, deleteItem } from '../actions/itemActions'
+import { getItem, editItem, deleteItem } from '../actions/itemActions';
 
 const EditItem = (props) => {
   useEffect(() => {
-    props.loadUser();
     props.getItem(props.match.params.id);
   }, []);
 
@@ -39,4 +37,4 @@ const mapStateToProps = (state) => ({
   item: state.item.item
 });
 
-export default connect(mapStateToProps, { loadUser, getItem, editItem, deleteItem })(EditItem);
+export default connect(mapStateToProps, { getItem, editItem, deleteItem })(EditItem);

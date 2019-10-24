@@ -49,11 +49,11 @@ const ItemDetail = (props) => {
             </Col>
           </Row>
           <Row className="my-2">
-            <Col><pre style={{ fontSize: '18px' }}>{description}</pre></Col>
+            <Col><pre style={{ fontSize: '18px', whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>{description}</pre></Col>
           </Row>
         </Container>
         {
-          props.isAuthenticated ? (
+          props.isAuthenticated && props.item.user == props.loginUser ? (
             <Container className="px-5 mb-5">
               <Button tag={Link} to={`/edit/${_id}`} color="success" className="mr-2">
                 Edit
@@ -71,9 +71,12 @@ const ItemDetail = (props) => {
   }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+  console.log(state.auth)
+  return({
   item: state.item.item,
-  isAuthenticated: state.auth.isAuthenticated
-});
+  isAuthenticated: state.auth.isAuthenticated,
+  loginUser: state.auth.user ? state.auth.user.id : null
+})};
 
 export default connect(mapStateToProps, { getItem, deleteItem })(ItemDetail);

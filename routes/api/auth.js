@@ -49,7 +49,12 @@ router.post('/api/auth', async (req, res) => {
 // @access Private
 router.get('/api/auth/user', auth, async (req, res) => {
   const user = await User.findById(req.user.id).select('-password');
-  res.send(user);
+  res.send({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    registerDate: user.registerDate
+  });
 });
 
 module.exports = router;
