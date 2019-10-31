@@ -114,7 +114,7 @@ class RegisterModal extends Component {
                 />
                 <Label for="password">Password</Label>
                 <Input
-                  type="text"
+                  type="password"
                   name="password"
                   id="password"
                   placeholder="Password"
