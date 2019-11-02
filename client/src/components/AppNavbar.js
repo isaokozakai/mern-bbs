@@ -59,8 +59,8 @@ class AppNavbar extends Component {
     );
 
     return (
-      <Navbar color="dark" dark expand="sm" className="mb-5 sticky-top">
-        <Container className="px-5">
+      <Navbar color="dark" dark expand="sm" className="mb-3 mb-md-5 sticky-top">
+        <Container className="px-md-5">
           <NavbarBrand href="/" onClick={() => sessionStorage.clear()}>Bulletin Board</NavbarBrand>
           <NavbarToggler style={{ color: 'white' }} onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

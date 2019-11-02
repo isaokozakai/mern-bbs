@@ -19,9 +19,9 @@ const Dashboard = (props) => {
   };
   return (
     <>
-      <Container className="mb-3 px-5" >
-        <Row>
-          <Col sm="6">
+      <Container className="px-md-5 mb-3" >
+        <Row className="d-flex justify-content-between">
+          <Col sm="6" className="order-1 order-sm-0">
             <Form onSubmit={onSearchClick}>
               <InputGroup>
                 <Input id="search" placeholder="search" name="text" />
@@ -33,8 +33,8 @@ const Dashboard = (props) => {
           </Col>
           {
             props.isAuthenticated ?
-              <Col className="d-flex justify-content-end">
-                <Button tag={Link} to="/create">
+              <Col className="order-0 order-sm-1 mb-2 mb-sm-0">
+                <Button tag={Link} to="/create" className="float-right">
                   Add Item
                 </Button>
               </Col>

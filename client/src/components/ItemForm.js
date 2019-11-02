@@ -24,7 +24,7 @@ const ItemForm = (props) => {
   };
 
   return (
-    <Container className="px-5">
+    <Container className="px-md-5">
       <Form onSubmit={onSubmit}>
         {error && <p className="text-danger">{error}</p>}
         <Input

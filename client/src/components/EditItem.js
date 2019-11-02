@@ -17,7 +17,7 @@ const EditItem = (props) => {
   if (props.item) {
     return (
       <>
-        <Container className="px-5">
+        <Container className="px-md-5">
           <h1>Edit Item</h1>
         </Container>
         <ItemForm
