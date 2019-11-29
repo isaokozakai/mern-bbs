@@ -33,7 +33,7 @@ const AppRouter = () => {
     ...rest
   }) => {
     if (rest.edit) {
-      isAuthenticated = isAuthenticated && loginUser == createdBy;
+      isAuthenticated = isAuthenticated && loginUser === createdBy;
     }
     return (
       <Route {...rest} component={(props) => (

@@ -70,7 +70,7 @@ router.patch('/api/items/:id', auth, async (req, res) => {
 
     res.send(item);
   } catch (e) {
-    if (e.name == 'ValidationError') {
+    if (e.name === 'ValidationError') {
       res.status(400).send(e);
     } else {
       res.status(500).send(e);
