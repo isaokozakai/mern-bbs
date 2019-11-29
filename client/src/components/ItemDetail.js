@@ -31,7 +31,7 @@ const ItemDetail = (props) => {
         <Container className="px-md-5 mb-2">
           <Row>
             <Col>
-              <h1>{title}</h1>
+              <h2>{title}</h2>
             </Col>
           </Row>
           <Row className="mt-2">
@@ -49,7 +49,7 @@ const ItemDetail = (props) => {
             </Col>
           </Row>
           <Row className="my-2">
-            <Col><pre style={{ fontSize: '18px', whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>{description}</pre></Col>
+            <Col><pre style={{ fontSize: '17px', whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>{description}</pre></Col>
           </Row>
         </Container>
         {
