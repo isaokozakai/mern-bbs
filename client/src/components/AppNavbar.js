@@ -61,7 +61,9 @@ class AppNavbar extends Component {
     return (
       <Navbar color="dark" dark expand="sm" className="mb-3 mb-md-5 sticky-top">
         <Container className="px-md-5">
-          <NavbarBrand href="/" onClick={() => sessionStorage.clear()}>sharedlist</NavbarBrand>
+          <NavbarBrand href="/" onClick={() => sessionStorage.clear()}>
+            <h1 className="m-0">sharedlist</h1>
+          </NavbarBrand>
           <NavbarToggler style={{ color: 'white' }} onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
