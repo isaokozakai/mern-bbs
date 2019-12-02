@@ -66,7 +66,9 @@ const ItemDetail = (props) => {
     )
   } else {
     return (
-      <Container />
+      <Container className="d-flex justify-content-center align-items-center">
+        <img src="/images/loading.gif" />
+      </Container>
     )
   }
 };
