@@ -39,7 +39,7 @@ class ItemList extends Component {
       <Container className="mb-4 px-md-5">
         <ListGroup>
           {items.map((item) => (
-            <ItemListItem key={item._id} id={item._id} title={item.title} postedAt={item.postedAt} updatedAt={item.updatedAt} isAuthenticated={this.props.isAuthenticated} />
+            <ItemListItem {...item} key={item._id} isAuthenticated={this.props.isAuthenticated} />
           ))}
         </ListGroup>
       </Container>

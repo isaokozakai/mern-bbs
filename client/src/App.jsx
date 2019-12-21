@@ -8,7 +8,7 @@ import { loadUser } from './actions/authActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
-function App() {
+const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
