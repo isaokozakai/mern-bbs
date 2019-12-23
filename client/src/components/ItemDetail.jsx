@@ -28,7 +28,7 @@ const ItemDetail = (props) => {
 
     return (
       <>
-        <Container className="px-md-5 mb-2">
+        <Container className="px-md-5 mt-4 mb-2">
           <Row>
             <Col>
               <h2>{title}</h2>
