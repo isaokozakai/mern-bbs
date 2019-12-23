@@ -19,7 +19,7 @@ const Dashboard = (props) => {
   };
   return (
     <>
-      <Container className="px-md-5 mt-4 mt-md-5 mb-3" >
+      <Container className="px-md-5 mt-4 mb-3" >
         <Row className="d-flex justify-content-between">
           <Col sm="6" className="order-1 order-sm-0">
             <Form onSubmit={onSearchClick}>
