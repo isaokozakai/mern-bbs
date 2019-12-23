@@ -15,7 +15,7 @@ const AddItem = (props) => {
   return (
     <>
       <Container className="px-md-5">
-        <h1>Add Item</h1>
+        <h2>Add Item</h2>
       </Container>
       <ItemForm onSubmit={onSubmit} />
     </>

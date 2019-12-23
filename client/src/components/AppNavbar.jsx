@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   Collapse,
   Navbar,
@@ -33,7 +33,7 @@ class AppNavbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <Fragment>
+      <>
         <NavItem>
           <span className="navbar-text mr-3">
             <strong>
@@ -44,18 +44,18 @@ class AppNavbar extends Component {
         <NavItem>
           <Logout />
         </NavItem>
-      </Fragment>
+      </>
     );
 
     const guestLinks = (
-      <Fragment>
+      <>
         <NavItem>
           <RegisterModal />
         </NavItem>
         <NavItem>
           <LoginModal />
         </NavItem>
-      </Fragment>
+      </>
     );
 
     return (

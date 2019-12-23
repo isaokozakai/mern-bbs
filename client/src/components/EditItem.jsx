@@ -18,7 +18,7 @@ const EditItem = (props) => {
     return (
       <>
         <Container className="px-md-5">
-          <h1>Edit Item</h1>
+          <h2>Edit Item</h2>
         </Container>
         <ItemForm
           item={props.item}
