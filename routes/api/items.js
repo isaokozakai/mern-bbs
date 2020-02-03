@@ -29,7 +29,6 @@ router.get('/api/items/:id', async (req, res) => {
   }
 });
 
-
 // @route  POST api/items
 // @desc   Create an item
 // @access Private
