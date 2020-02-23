@@ -17,6 +17,24 @@ I wanted to make a social media servis that helps people make friends or find so
  - Uploading images
  - Leaving comments on an article
  
+ # Data Structure
+```
+    .
+    ├── users
+    |     ├── _id
+    |     ├── name
+    |     ├── email
+    |     ├── password
+    |     └── registerDate
+    └── items
+          ├── _id
+          ├── title
+          ├── description
+          ├── postedAt
+          ├── updatedAt
+          └── user
+```
+ 
  ## Technologies
  - React
  - Redux
