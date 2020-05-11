@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import AppRouter from './components/AppRouter';
+import AppRouter from './components/router/AppRouter';
 
 import { Provider } from 'react-redux';
 import store from './store';
