@@ -1,23 +1,16 @@
 
 const initialState = {
   token: localStorage.getItem('token'),
-  isAuthnticated: null,
-  isLoading: false,
+  isAuthnticated: false,
   user: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'USER_LOADING':
-      return {
-        ...state,
-        isLoading: true
-      }
-    case 'USER_LOADED':
+    case 'LOAD_USER':
       return {
         ...state,
         isAuthenticated: true,
-        isLoading: false,
         user: action.user
       }
     case 'LOGIN_SUCCESS':
@@ -26,8 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ...action.user,
-        isAuthenticated: true,
-        isLoading: false
+        isAuthenticated: true
       }
     case 'AUTH_ERROR':
     case 'LOGIN_FAIL':
@@ -38,8 +30,7 @@ export default (state = initialState, action) => {
         ...state,
         token: null,
         user: null,
-        isAuthenticated: false,
-        isLoading: false
+        isAuthenticated: false
       }
     default:
       return state;

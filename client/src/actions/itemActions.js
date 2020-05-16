@@ -3,7 +3,6 @@ import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
 export const getItems = () => async dispatch => {
-  dispatch(setItemsLoading);
   try {
     const res = await axios.get('/api/items');
     dispatch({
@@ -16,7 +15,6 @@ export const getItems = () => async dispatch => {
 };
 
 export const getItem = (id) => async dispatch => {
-  dispatch(setItemsLoading);
   try {
     const res = await axios.get(`/api/items/${id}`);
     dispatch({

@@ -1,21 +1,14 @@
 
-const initialState = {
-  items: [],
-  loading: false
-}
+const initialState = { items: [] };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'GET_ITEMS':
-      return {
-        items: action.items,
-        loading: false
-      };
+      return { items: action.items };
     case 'GET_ITEM':
       return {
         ...state,
-        item: action.item,
-        loading: false
+        item: action.item
       };
     case 'ADD_ITEM':
       return {
@@ -37,12 +30,7 @@ export default (state = initialState, action) => {
       return {
         items: state.items.filter(item => item._id !== action.id)
       };
-    case 'ITEMS_LOADING':
-      return {
-        ...state,
-        loading: true
-      };
     default:
       return state;
   }
-}
+};

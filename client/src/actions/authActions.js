@@ -2,12 +2,10 @@ import axios from "axios";
 import { returnErrors } from "./errorActions";
 
 export const loadUser = () => async (dispatch, getState) => {
-  dispatch({ type: 'USER_LOADING' });
-
   try {
     const res = await axios.get('/api/auth/user', tokenConfig(getState));
     dispatch({
-      type: 'USER_LOADED',
+      type: 'LOAD_USER',
       user: res.data
     });
   } catch (err) {
