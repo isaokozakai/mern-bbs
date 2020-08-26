@@ -21,9 +21,8 @@ class ItemList extends Component {
     if (text == null) {
       text = this.props.text;
     }
-    const regex = new RegExp(text, 'i');
     return items.filter((item) => {
-      return item.title.match(regex) || item.description.match(regex);
+      return item.title.indexOf(text) >= 0 || item.description.indexOf(text) >= 0;
     })
   }
 
